@@ -55,7 +55,8 @@ def upload_path(instance, filename: str) -> str:
     base_dir = get_base_dir_from_object(instance)
     target_filename = get_safe_path_name(stem)
 
-    return os.path.join(base_dir, f"{target_filename}{suffix}")
+    return os.path.join(base_dir, "{target_filename}{suffix}".format(target_filename=target_filename,
+                                                                     suffix=suffix))
 
 
 def upload_path_uuid4(instance, filename: str) -> str:
@@ -72,7 +73,10 @@ def upload_path_uuid4(instance, filename: str) -> str:
     target_filename = get_safe_path_name(stem)
     rand_uuid = uuid.uuid4()
 
-    return os.path.join(base_dir, f"{target_filename}{SEPARATOR}{rand_uuid}{suffix}")
+    return os.path.join(base_dir, "{target_filename}{SEPARATOR}{rand_uuid}{suffix}".format(target_filename=target_filename,
+                                                                                           SEPARATOR=SEPARATOR,
+                                                                                           rand_uuid=rand_uuid,
+                                                                                           suffix=suffix))
 
 
 def upload_path_strip_uuid4(instance, filename: str) -> str:
@@ -88,4 +92,5 @@ def upload_path_strip_uuid4(instance, filename: str) -> str:
     base_dir = get_base_dir_from_object(instance)
     rand_uuid = uuid.uuid4()
 
-    return os.path.join(base_dir, f"{rand_uuid}{suffix}")
+    return os.path.join(base_dir, "{rand_uuid}{suffix}".format(rand_uuid=rand_uuid,
+                                                               suffix=suffix))
