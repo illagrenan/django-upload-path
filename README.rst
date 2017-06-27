@@ -18,10 +18,6 @@ Django Upload Path
     :target: https://coveralls.io/github/illagrenan/django-upload-path?branch=master
     :alt: Coverage
 
-.. image:: https://pyup.io/repos/github/illagrenan/django-upload-path/shield.svg
-    :target: https://pyup.io/repos/github/illagrenan/django-upload-path/
-    :alt: Updates
-
 .. image:: https://img.shields.io/pypi/implementation/django-upload-path.svg
     :target: https://pypi.python.org/pypi/django_brotli/
     :alt: Supported Python implementations
