@@ -1,46 +1,39 @@
-===========================================================================
-Django Brotli: *Middleware that compresses response using brotli algorithm*
-===========================================================================
+==================
+Django Upload Path
+==================
 
-.. image:: https://img.shields.io/pypi/v/django-brotli.svg
-    :target: https://pypi.python.org/pypi/django-brotli
+.. image:: https://img.shields.io/pypi/v/django-upload-path.svg
+    :target: https://pypi.python.org/pypi/django-upload-path
     :alt: PyPi
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
-    :target: https://pypi.python.org/pypi/django-brotli/
+    :target: https://pypi.python.org/pypi/django-upload-path/
     :alt: MIT
 
-.. image:: https://img.shields.io/travis/illagrenan/django-brotli.svg
-    :target: https://travis-ci.org/illagrenan/django-brotli
+.. image:: https://img.shields.io/travis/illagrenan/django-upload-path.svg
+    :target: https://travis-ci.org/illagrenan/django-upload-path
     :alt: TravisCI
 
-.. image:: https://img.shields.io/coveralls/illagrenan/django-brotli.svg
-    :target: https://coveralls.io/github/illagrenan/django-brotli?branch=master
+.. image:: https://img.shields.io/coveralls/illagrenan/django-upload-path.svg
+    :target: https://coveralls.io/github/illagrenan/django-upload-path?branch=master
     :alt: Coverage
 
-.. image:: https://pyup.io/repos/github/illagrenan/django-brotli/shield.svg
-    :target: https://pyup.io/repos/github/illagrenan/django-brotli/
+.. image:: https://pyup.io/repos/github/illagrenan/django-upload-path/shield.svg
+    :target: https://pyup.io/repos/github/illagrenan/django-upload-path/
     :alt: Updates
 
-.. image:: https://img.shields.io/pypi/implementation/django-brotli.svg
+.. image:: https://img.shields.io/pypi/implementation/django-upload-path.svg
     :target: https://pypi.python.org/pypi/django_brotli/
     :alt: Supported Python implementations
 
-.. image:: https://img.shields.io/pypi/pyversions/django-brotli.svg
+.. image:: https://img.shields.io/pypi/pyversions/django-upload-path.svg
     :target: https://pypi.python.org/pypi/django_brotli/
     :alt: Supported Python versions
 
 Introduction
 ------------
 
-This project consists of ``BrotliMiddleware`` which works the same as Django ``GZipMiddleware`` (`Docs`_/`Source`_). ``BrotliMiddleware`` will compress content of HTTP response using brotli algorithm (Brotli Compressed Data Format is defined in `RFC 7932`_).
-
-In November 2016 is brotli supported by Firefox, Chrome, Android Browser and Opera (detailed stats on `caniuse`_). Brotli is applied only when client has sent ``Accept-Encoding`` header containing ``br``.
-
-.. _`Docs`: https://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.gzip
-.. _`Source`: https://github.com/django/django/blob/master/django/middleware/gzip.py#L10-L52
-.. _`RFC 7932`: https://www.ietf.org/rfc/rfc7932.txt
-.. _`caniuse`: http://caniuse.com/#search=brotli
+TODO
 
 Installation
 ------------
@@ -52,45 +45,22 @@ Installation
 
 .. code:: shell
 
-    pip install --upgrade django-brotli
+    pip install --upgrade django-upload-path
 
 
-Add ``django_brotli.middleware.BrotliMiddleware`` to ``MIDDLEWARE``:
+TODO
 
-.. code:: python
+Usage
+-----
 
-    MIDDLEWARE = [
-        'django_brotli.middleware.BrotliMiddleware',
-        # ...
-    ]
-
-
-Credits and Resources
----------------------
-
-- |brotlipy|_
-- `Brotli on Wikipedia (https://en.wikipedia.org/wiki/Brotli) <https://en.wikipedia.org/wiki/Brotli>`_
-- `Brotli compression format repository by Google (https://github.com/google/brotli) <https://github.com/google/brotli>`_
-
-.. |brotlipy| replace:: ``brotlipy`` Python bindings to the Brotli compression library (https://github.com/python-hyper/brotlipy)
-.. _brotlipy: https://github.com/python-hyper/brotlipy
-
-Contributing
-------------
-
-1. Clone this repository (``git clone ...``)
-2. Create virtualenv
-3. Install package dependencies: ``pip install --upgrade -r requirements.txt``
-4. Change some code
-5. Run tests: in project root simply execute ``pytest``
-6. Submit PR :)
+TODO
 
 License
 -------
 
 The MIT License (MIT)
 
-Copyright (c) 2016–2017 Vašek Dohnal (@illagrenan)
+Copyright (c) 2017 Vašek Dohnal (@illagrenan)
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
