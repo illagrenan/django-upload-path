@@ -10,7 +10,7 @@ from typing import Tuple
 
 from django.utils.text import slugify
 
-SEPARATOR: str = '-'
+SEPARATOR = '-'  # type: str
 
 __all__ = [
     'get_safe_path_name',
@@ -38,7 +38,7 @@ def get_base_dir_from_object(instance):
 
 
 def parse_filename(filename: str) -> Tuple[str, str]:
-    path: pathlib.Path = pathlib.Path(filename)
+    path = pathlib.Path(filename)  # type: pathlib.Path
 
     return path.stem, path.suffix.lower()
 
