@@ -5,7 +5,7 @@ import os
 import re
 from unittest import TestCase
 
-from django_upload_path.upload_path import upload_path, get_safe_path_name, upload_path_strip_uuid4, upload_path_uuid4, get_base_dir_from_object, parse_filename
+from django_upload_path.upload_path import auto_cleaned_path, get_safe_path_name, auto_cleaned_path_stripped_uuid4, auto_cleaned_path_uuid4, get_base_dir_from_object, parse_filename
 
 UUID_RAW_REGEX = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 
@@ -41,14 +41,14 @@ class ParseFilenameTestCase(TestCase):
 
 class UploadPathTestCase(TestCase):
     def test_get_safe_path_name(self):
-        self.assertEqual(os.path.join('dummymodel', 'fooo-bar.txt'), upload_path(DummyModel(), 'fooo-bar.txt'))
+        self.assertEqual(os.path.join('dummymodel', 'fooo-bar.txt'), auto_cleaned_path(DummyModel(), 'fooo-bar.txt'))
 
 
 class UploadPathUUID4TestCase(TestCase):
     def test_get_safe_path_name(self):
-        self.assertRegex(upload_path_uuid4(DummyModel(), 'fooo-bar.txt'), r"dummymodel{}fooo-bar-{}.txt".format(re.escape(os.path.sep), UUID_RAW_REGEX))
+        self.assertRegex(auto_cleaned_path_uuid4(DummyModel(), 'fooo-bar.txt'), r"dummymodel{}fooo-bar-{}.txt".format(re.escape(os.path.sep), UUID_RAW_REGEX))
 
 
 class UploadPathStripUUID4TestCase(TestCase):
     def test_get_safe_path_name(self):
-        self.assertRegex(upload_path_strip_uuid4(DummyModel(), 'fooo-bar.txt'), r"dummymodel{}{}.txt".format(re.escape(os.path.sep), UUID_RAW_REGEX))
+        self.assertRegex(auto_cleaned_path_stripped_uuid4(DummyModel(), 'fooo-bar.txt'), r"dummymodel{}{}.txt".format(re.escape(os.path.sep), UUID_RAW_REGEX))

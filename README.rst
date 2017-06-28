@@ -29,27 +29,61 @@ Django Upload Path
 Introduction
 ------------
 
-TODO
+This application provides various implementations for the ``FileField/ImageField.upload_to`` attribute (`https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.FileField.upload_to <https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.FileField.upload_to>`_) (``upload_to`` attribute accepts callable).
+
+These implementations are:
+
+- ``auto_cleaned_path`` will generate ``{MODEL_NAME}/{SAFE_UPLOADED_FILENAME}{SUFFIX}``
+- ``auto_cleaned_path_uuid4`` will generate ``{MODEL_NAME}/{SAFE_UPLOADED_FILENAME}{SEPARATOR}{UUID4}{SUFFIX}``
+- ``auto_cleaned_path_stripped_uuid4`` will generate ``{MODEL_NAME}/{UUID4}{SUFFIX}``
+
+
+Example
+=======
+
+For example, how ``auto_cleaned_path`` works: First, the original file name (typically from the user) is always cleaned (using ``django.utils.text.slugify``). Then, a new path is generated that contains the model name.
+
+If you have a ``MyModel`` model and the user uploads a ``foo-bar.txt`` file, the resulting path will be ``mymodel/foo-bar.txt``.
+
+.. code:: python
+
+    from django.db import models
+    from django_upload_path import auto_cleaned_path
+
+
+    class MyModel(models.Model):
+        file = models.FileField(upload_to=auto_cleaned_path)
+
 
 Installation
 ------------
-
-**This software is in alpha version and should not be used in production.**
 
 - Supported Python versions are: ``3.4.``, ``3.5``, ``3.6`` and ``3.7-dev``.
 - Supported Django versions are: ``1.8.x`` (LTS), ``1.9.x``, ``1.10.x`` and ``1.11.x`` (LTS).
 
 .. code:: shell
 
-    pip install --upgrade django-upload-path
+    pip install django-upload-path
 
-
-TODO
+**Do not** add the app to ``INSTALLED_APPS`` (it is useless).
 
 Usage
 -----
 
-TODO
+.. code:: python
+
+    from django.db import models
+    from django_upload_path.upload_path import auto_cleaned_path, auto_cleaned_path_stripped_uuid4, auto_cleaned_path_uuid4
+
+
+    class MyModel(models.Model):
+        file1 = models.FileField(upload_to=auto_cleaned_path)
+        file2 = models.FileField(upload_to=auto_cleaned_path_stripped_uuid4)
+        file3 = models.FileField(upload_to=auto_cleaned_path_uuid4)
+
+
+Note: ``ImageField`` (`https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ImageField <https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ImageField>`_) is also supported.
+
 
 License
 -------

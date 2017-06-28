@@ -16,9 +16,10 @@ __all__ = [
     'get_safe_path_name',
     'get_base_dir_from_object',
     'parse_filename',
+    'auto_cleaned_path',
     'upload_path',
-    'upload_path_uuid4',
-    'upload_path_strip_uuid4'
+    'auto_cleaned_path_uuid4',
+    'auto_cleaned_path_stripped_uuid4'
 ]
 
 
@@ -43,7 +44,7 @@ def parse_filename(filename: str) -> Tuple[str, str]:
     return path.stem, path.suffix.lower()
 
 
-def upload_path(instance, filename: str) -> str:
+def auto_cleaned_path(instance, filename: str) -> str:
     """
     Gets upload path in this format: {MODEL_NAME}/{SAFE_UPLOADED_FILENAME}{SUFFIX}.
 
@@ -59,7 +60,11 @@ def upload_path(instance, filename: str) -> str:
                                                                      suffix=suffix))
 
 
-def upload_path_uuid4(instance, filename: str) -> str:
+def upload_path(*args, **kwargs):
+    return auto_cleaned_path(*args, **kwargs)
+
+
+def auto_cleaned_path_uuid4(instance, filename: str) -> str:
     """
     Gets upload path in this format: {MODEL_NAME}/{SAFE_UPLOADED_FILENAME}{SEPARATOR}{UUID4}{SUFFIX}.
     Use this function to prevent any collisions with existing files in same folder.
@@ -79,7 +84,7 @@ def upload_path_uuid4(instance, filename: str) -> str:
                                                                                            suffix=suffix))
 
 
-def upload_path_strip_uuid4(instance, filename: str) -> str:
+def auto_cleaned_path_stripped_uuid4(instance, filename: str) -> str:
     """
     Gets upload path in this format: {MODEL_NAME}/{UUID4}{SUFFIX}.
     Same as `upload_path_uuid4` but deletes the original file name from the user.
