@@ -7,8 +7,8 @@ from setuptools import setup
 
 setup(
     name='django-upload-path',
-    version='0.1.0',
-    description="""TODO""",
+    version='0.1.1',
+    description="""Various implementations for the Django ``FileField/ImageField.upload_to`` model field attribute.""",
     long_description=io.open("README.rst", 'r', encoding="utf-8").read(),
     url='https://github.com/illagrenan/django-upload-path',
     license='MIT',
